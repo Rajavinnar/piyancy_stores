@@ -119,3 +119,59 @@ document.querySelectorAll('button').forEach(button => {
         alert('Product added to cart!');
     });
 });
+import 'package:flutter/material.dart';
+import 'product_page.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Piyancy Stores'),
+      ),
+      body: ProductList(),
+    );
+  }
+}
+
+class ProductList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        ListTile(
+          title: Text('Product 1'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProductPage()),
+            );
+          },
+        ),
+        // பிற பொருள்களின் பட்டியல் இடம்
+      ],
+    );
+  }
+}
+import 'package:flutter/material.dart';
+import 'home_screen.dart';  // Home screen
+import 'product_page.dart';  // Product page
+import 'checkout_page.dart';  // Checkout page
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Piyancy Stores',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: HomeScreen(),
+    );
+  }
+}
